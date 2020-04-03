@@ -1,0 +1,15 @@
+@import 'colors';
+
+@mixin box-shadow($width, $height, $blur) {
+	-webkit-box-shadow: $width $height $blur 0px $shadow-color;
+	-moz-box-shadow: $width $height $blur 0px $shadow-color;
+	box-shadow: $width $height $blur 0px $shadow-color;
+}
+
+@mixin gradient-color($start, $end) {
+	background: $start;
+	background: -moz-linear-gradient(45deg, $start 0%, $end 60%);
+	background: -webkit-linear-gradient(45deg, $start 0%, $end 60%);
+	background: linear-gradient(45deg, $start 0%, $end 60%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start",endColorstr="$end",GradientType=1);
+}
