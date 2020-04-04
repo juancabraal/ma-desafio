@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Table,
 	TableHead,
 	TableRow,
 	TableCell,
 	TableBody,
-	Checkbox,
 	Icon,
 	IconButton
 } from '@material-ui/core';
@@ -13,22 +12,6 @@ import {
 import { formatDate } from 'helpers/utils';
 
 export default function({ usuarios }) {
-	const [selected, setSelected] = useState([]);
-
-	function onChangeSelected(event) {
-		const id = parseInt(event.target.value);
-
-		let selectedArray = [...selected];
-
-		if (selected.includes(id)) {
-			selectedArray = selectedArray.filter(value => value !== id);
-		} else {
-			selectedArray.push(id);
-		}
-
-		setSelected(selectedArray);
-	}
-
 	function getStatus(status) {
 		if (status === 1) {
 			return <span className="ativo">ATIVO</span>;
@@ -38,8 +21,8 @@ export default function({ usuarios }) {
 	}
 
 	return (
-		<Table size="small">
-			<TableHead stickyHeader className="user-table-head">
+		<Table className="table" size="small">
+			<TableHead className="user-table-head">
 				<TableRow>
 					<TableCell></TableCell>
 					<TableCell>USUÁRIO</TableCell>
@@ -54,40 +37,44 @@ export default function({ usuarios }) {
 			<TableBody className="user-table-body">
 				{usuarios.map(row => (
 					<TableRow key={row.id} className="table-item">
-						<TableCell padding="checkbox">
-							<Checkbox
-								checked={selected.indexOf(row.id) >= 0}
-								onChange={onChangeSelected}
-								value={row.id}
-								name="userSelected"
-							/>
+						<TableCell
+							className="item-hide-hover"
+							padding="checkbox"
+						>
+							<div className="check-user"></div>
 						</TableCell>
-						<TableCell>{row.usuario}</TableCell>
-						<TableCell>{row.email}</TableCell>
-						<TableCell align="center">
+						<TableCell className="item-hide-hover">
+							{row.usuario}
+						</TableCell>
+						<TableCell className="item-hide-hover">
+							{row.email}
+						</TableCell>
+						<TableCell className="item-hide-hover" align="center">
 							{formatDate(row.created_at, 'DD/MM/Y')}
 						</TableCell>
-						<TableCell align="center">
+						<TableCell className="item-hide-hover" align="center">
 							{formatDate(row.updated_at, 'DD/MM/Y')}
 						</TableCell>
-						<TableCell align="center">{row.rule}</TableCell>
-						<TableCell align="center">
+						<TableCell className="item-hide-hover" align="center">
+							{row.rule}
+						</TableCell>
+						<TableCell className="item-hide-hover" align="center">
 							{getStatus(row.status)}
 						</TableCell>
 						<TableCell align="right">
-							<IconButton>
+							<IconButton className="item-show-hover">
 								<Icon>delete</Icon>
 							</IconButton>
-							<IconButton>
+							<IconButton className="item-show-hover">
 								<Icon>archive</Icon>
 							</IconButton>
-							<IconButton>
+							<IconButton className="item-show-hover">
 								<Icon>security</Icon>
 							</IconButton>
-							<IconButton>
+							<IconButton className="item-show-hover">
 								<Icon>create</Icon>
 							</IconButton>
-							<IconButton>
+							<IconButton className="item-hide-hover">
 								<Icon>more_horiz</Icon>
 							</IconButton>
 						</TableCell>

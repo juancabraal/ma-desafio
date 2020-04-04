@@ -58,7 +58,7 @@ export function getAll() {
 						status: 1
 					}
 				]),
-			1000
+			0
 		)
 	);
 }

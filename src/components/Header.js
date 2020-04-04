@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Icon, TextField, InputAdornment, Button } from '@material-ui/core';
 
-export default function() {
+export default function({ onMenu }) {
 	return (
 		<div className="header">
 			<div className="header-content">
@@ -29,7 +29,10 @@ export default function() {
 					/>
 				</form>
 				<div className="grow"></div>
-				<Button className="icon icon-white icon-shadow br-10">
+				<Button
+					className="icon icon-white icon-shadow br-10"
+					onClick={() => onMenu()}
+				>
 					<Icon>filter_list</Icon>
 				</Button>
 				<Button
@@ -41,15 +44,17 @@ export default function() {
 					INCLUIR USUÁRIO
 				</Button>
 				<div className="separator"></div>
-				<Button className="icon br-10">
-					<Icon>home</Icon>
-				</Button>
-				<Button className="icon br-10">
-					<Icon>settings</Icon>
-				</Button>
-				<Button className="icon br-10">
-					<Icon>power_settings_new</Icon>
-				</Button>
+				<div className="settings-buttons">
+					<Button className="icon br-10">
+						<Icon>home</Icon>
+					</Button>
+					<Button className="icon br-10">
+						<Icon>settings</Icon>
+					</Button>
+					<Button className="icon br-10">
+						<Icon>power_settings_new</Icon>
+					</Button>
+				</div>
 			</div>
 		</div>
 	);

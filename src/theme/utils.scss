@@ -1,6 +1,6 @@
-@import 'colors';
+// @import 'colors';
 
-@mixin box-shadow($width, $height, $blur) {
+@mixin box-shadow($width, $height, $blur, $shadow-color) {
 	-webkit-box-shadow: $width $height $blur 0px $shadow-color;
 	-moz-box-shadow: $width $height $blur 0px $shadow-color;
 	box-shadow: $width $height $blur 0px $shadow-color;
@@ -12,4 +12,74 @@
 	background: -webkit-linear-gradient(45deg, $start 0%, $end 60%);
 	background: linear-gradient(45deg, $start 0%, $end 60%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="$start",endColorstr="$end",GradientType=1);
+}
+
+@mixin slideAnimation($start, $end) {
+	@-webkit-keyframes slide {
+		0% {
+			transform: translate($start);
+		}
+		100% {
+			transform: translate($end);
+		}
+	}
+	@-moz-keyframes slide {
+		0% {
+			transform: translate($start);
+		}
+		100% {
+			transform: translate($end);
+		}
+	}
+	@-o-keyframes slide {
+		0% {
+			transform: translate($start);
+		}
+		100% {
+			transform: translate($end);
+		}
+	}
+	@keyframes slide {
+		0% {
+			transform: translate($start);
+		}
+		100% {
+			transform: translate($end);
+		}
+	}
+}
+
+@mixin backdropAnimation($start, $end) {
+	@-webkit-keyframes backdrop {
+		0% {
+			background: $start;
+		}
+		100% {
+			background: $end;
+		}
+	}
+	@-moz-keyframes backdrop {
+		0% {
+			background: $start;
+		}
+		100% {
+			background: $end;
+		}
+	}
+	@-o-keyframes backdrop {
+		0% {
+			background: $start;
+		}
+		100% {
+			background: $end;
+		}
+	}
+	@keyframes backdrop {
+		0% {
+			background: $start;
+		}
+		100% {
+			background: $end;
+		}
+	}
 }

@@ -1,11 +1,10 @@
 @import 'colors';
 @import 'utils';
+@import 'fonts';
 
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-		'Helvetica Neue', sans-serif;
+	font-family: $primary-font;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background: $body-color;
@@ -49,7 +48,7 @@ body {
 
 .header {
 	padding: 20px 40px;
-	@include box-shadow(0px, 15px, 20px);
+	@include box-shadow(0px, 15px, 20px, $shadow-color);
 
 	.header-content {
 		display: flex;
@@ -67,8 +66,12 @@ body {
 			min-width: auto;
 		}
 
+		.settings-buttons .icon {
+			padding: 10px;
+		}
+
 		.icon-shadow {
-			@include box-shadow(2px, 2px, 10px);
+			@include box-shadow(5px, 5px, 10px, $shadow-color-darker);
 		}
 
 		.icon-white {
@@ -76,7 +79,7 @@ body {
 		}
 
 		.gd-icon {
-			@include gradient-color($gradient-icon-start, $gradient-icon-end);
+			@include gradient-color($primary-color, $secundary-color);
 
 			span {
 				color: white;
@@ -97,11 +100,16 @@ body {
 /******* CONTENT *******/
 
 .content {
-	padding: 20px 40px;
+	padding: 30px 40px;
+	min-height: 73vh;
+
+	.table {
+		@include box-shadow(0px, 15px, 20px, $shadow-color);
+	}
 
 	.user-table-head {
 		background: white;
-		@include box-shadow(0px, 15px, 20px);
+		@include box-shadow(0px, 15px, 20px, $shadow-color);
 		overflow: hidden;
 		transform: translate3d(0, 0, 1px);
 
@@ -120,19 +128,37 @@ body {
 	}
 
 	.user-table-body {
-		td {
-			border-bottom: none;
-		}
-
-		tr {
+		.table-item {
 			background: $table-background;
+			border-bottom: 3px solid $table-background;
 		}
 
-		tr:nth-child(even) {
+		.item-show-hover {
+			visibility: hidden;
+		}
+
+		.table-item:hover {
+			background: white !important;
+
+			td {
+				border-bottom: 3px solid $primary-color;
+			}
+
+			.item-hide-hover {
+				opacity: 0.1;
+			}
+
+			.item-show-hover {
+				visibility: visible;
+			}
+		}
+
+		.table-item:nth-child(even) {
 			background: $table-background-stripping;
+			border-bottom: 3px solid $table-background-stripping;
 		}
 
-		tr:last-child {
+		.table-item:last-child {
 			td:first-child {
 				border-bottom-left-radius: 5px;
 			}
@@ -142,9 +168,240 @@ body {
 			}
 		}
 
+		.table-item td {
+			border-bottom: none;
+
+			.check-user {
+				border: 3px solid $separator-color;
+				background: white;
+				border-radius: 5px;
+				width: 15px;
+				height: 15px;
+			}
+		}
+
 		.ativo {
 			color: $user-ativo;
 			font-weight: bold;
+		}
+	}
+
+	.pagination {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 30px;
+
+		.page {
+			padding: 15px 20px;
+			color: #c3c3c3;
+			border-radius: 5px;
+			margin: 0px 5px;
+		}
+
+		.active-page {
+			color: white;
+			background: $primary-color;
+			cursor: initial;
+		}
+
+		.action {
+			padding: 12px 20px;
+			margin: 0px 5px;
+			background: #fafafa;
+			color: #c3c3c3;
+		}
+	}
+}
+
+.sidemenu-animation-enter {
+	opacity: 1;
+}
+.sidemenu-animation-enter-active {
+	opacity: 1;
+}
+.sidemenu-animation-exit {
+	opacity: 1;
+}
+
+.sidemenu-animation-exit-active {
+	opacity: 0;
+	transition: opacity 300ms, transform 300ms;
+}
+
+.backdrop {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 100;
+	display: flex;
+	justify-content: flex-end;
+	overflow: hidden;
+
+	animation-name: backdrop;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+
+	@include backdropAnimation(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+}
+
+.sidemenu {
+	width: 30vw;
+	height: 100vh;
+	background: $body-color;
+	animation-name: slide;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+
+	.filtro-title {
+		display: flex;
+		align-items: center;
+
+		span {
+			margin-right: 10px;
+			color: $icon-color;
+		}
+
+		h4 {
+			font-weight: bold;
+			margin: 0px;
+		}
+	}
+
+	.sidemenu-content {
+		padding: 30px 40px;
+
+		.description {
+			font-style: italic;
+			color: $icon-color;
+		}
+
+		.horiz-separator {
+			height: 5px;
+			width: 40px;
+			background: $separator-color;
+			margin: 20px 0px;
+		}
+
+		.filter-itens {
+			padding: 0px;
+			margin: 0px;
+		}
+
+		.filter-item {
+			display: block;
+			padding: 20px 0px;
+			border-bottom: 1px solid $separator-color;
+		}
+
+		.item-header {
+			display: flex;
+			align-items: center;
+			background: transparent;
+			border: none;
+			width: 100%;
+			padding: 0px;
+			font-size: 14px;
+			cursor: pointer;
+
+			span {
+				color: $icon-color;
+			}
+
+			div {
+				color: $primary-color;
+				font-weight: bold;
+				padding: 0px 10px;
+				display: flex;
+				flex: 1;
+				font-family: $primary-font;
+			}
+		}
+
+		.item-content {
+			margin-top: 10px;
+			display: flex;
+			align-items: flex-end;
+			position: relative;
+
+			span {
+				margin: 0px 10px;
+			}
+		}
+
+		.item-radios {
+			margin-top: 10px;
+		}
+
+		.filter-apply {
+			display: block;
+			margin-top: 20px;
+			width: 100%;
+		}
+	}
+
+	@include slideAnimation(100vw, 0px);
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	background: $footer-color;
+
+	.live {
+		padding: 0px 0px 0px 40px;
+		background: $footer-color-secundary;
+		height: 60px;
+		position: relative;
+
+		.icon,
+		span {
+			color: $secundary-color !important;
+			font-weight: bold;
+		}
+	}
+
+	.live:before {
+		content: '';
+		position: absolute;
+		right: -60px;
+		border-bottom: 60px solid $footer-color-secundary;
+		border-right: 60px solid transparent;
+	}
+
+	.live,
+	.footer-content,
+	.location,
+	.update,
+	.date {
+		display: flex;
+		align-items: center;
+
+		.icon {
+			margin-right: 10px;
+			color: $icon-color;
+		}
+
+		span {
+			color: #e3e3e3;
+		}
+	}
+
+	.footer-content {
+		padding: 0px 40px 0px 80px;
+		flex: 1;
+
+		.spacing {
+			margin-right: 40px;
+		}
+
+		.cronometer {
+			font-size: 30px;
+			color: $secundary-color;
 		}
 	}
 }
