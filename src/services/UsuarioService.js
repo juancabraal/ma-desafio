@@ -1,5 +1,5 @@
 export function getAll() {
-	return new Promise(resolve =>
+	return new Promise((resolve) =>
 		setTimeout(
 			() =>
 				resolve([
@@ -10,7 +10,7 @@ export function getAll() {
 						created_at: '2019-05-28',
 						updated_at: '2019-05-30',
 						rule: '01',
-						status: 1
+						status: 1,
 					},
 					{
 						id: 5,
@@ -19,7 +19,7 @@ export function getAll() {
 						created_at: '2019-05-28',
 						updated_at: '2019-05-30',
 						rule: '01',
-						status: 1
+						status: 1,
 					},
 					{
 						id: 4,
@@ -28,7 +28,7 @@ export function getAll() {
 						created_at: '2019-05-28',
 						updated_at: '2019-05-30',
 						rule: '01',
-						status: 1
+						status: 1,
 					},
 					{
 						id: 3,
@@ -37,7 +37,7 @@ export function getAll() {
 						created_at: '2019-05-28',
 						updated_at: '2019-05-30',
 						rule: '01',
-						status: 1
+						status: 1,
 					},
 					{
 						id: 2,
@@ -46,7 +46,7 @@ export function getAll() {
 						created_at: '2019-05-28',
 						updated_at: '2019-05-30',
 						rule: '02',
-						status: 1
+						status: 1,
 					},
 					{
 						id: 1,
@@ -55,10 +55,10 @@ export function getAll() {
 						created_at: '2019-05-28',
 						updated_at: '2019-05-30',
 						rule: '02',
-						status: 1
-					}
+						status: 1,
+					},
 				]),
-			0
+			2000
 		)
 	);
 }

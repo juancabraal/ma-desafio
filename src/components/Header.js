@@ -2,18 +2,18 @@ import React from 'react';
 
 import { Icon, TextField, InputAdornment, Button } from '@material-ui/core';
 
-export default function({ onMenu }) {
+export default function ({ onMenu }) {
 	return (
 		<div className="header">
 			<div className="header-content">
 				<Button className="icon icon-shadow gd-icon br-15">
 					<Icon>bar_chart</Icon>
 				</Button>
-				<div className="separator"></div>
-				<Button className="icon icon-white icon-shadow br-10">
+				<div className="separator hide-sm"></div>
+				<Button className="icon icon-white icon-shadow br-10 hide-sm">
 					<Icon>security</Icon>
 				</Button>
-				<Button className="icon icon-shadow gd-icon br-10">
+				<Button className="icon icon-shadow gd-icon br-10 hide-sm">
 					<Icon>person</Icon>
 				</Button>
 				<form className="search-form" noValidate autoComplete="off">
@@ -24,7 +24,7 @@ export default function({ onMenu }) {
 								<InputAdornment position="end">
 									<Icon>search</Icon>
 								</InputAdornment>
-							)
+							),
 						}}
 					/>
 				</form>
@@ -39,12 +39,12 @@ export default function({ onMenu }) {
 					variant="contained"
 					color="primary"
 					startIcon={<Icon>person</Icon>}
-					className="add-user"
+					className="add-user hide-sm"
 				>
 					INCLUIR USUÁRIO
 				</Button>
-				<div className="separator"></div>
-				<div className="settings-buttons">
+				<div className="separator hide-sm"></div>
+				<div className="settings-buttons hide-sm">
 					<Button className="icon br-10">
 						<Icon>home</Icon>
 					</Button>

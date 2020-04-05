@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from '@material-ui/core';
 
-export default function({ totalRows, rowsPerPage, page }) {
+export default function ({ totalRows, rowsPerPage, page }) {
 	const totalPages =
 		totalRows > rowsPerPage ? Math.ceil(totalRows, rowsPerPage) : 1;
 
@@ -36,7 +36,7 @@ export default function({ totalRows, rowsPerPage, page }) {
 		<div className="pagination">
 			<Button
 				variant="text"
-				className="action"
+				className="action hide-sm"
 				disabled={isFirstOrPreviousDisabled()}
 			>
 				Primeiro
@@ -58,7 +58,7 @@ export default function({ totalRows, rowsPerPage, page }) {
 			</Button>
 			<Button
 				variant="text"
-				className="action"
+				className="action hide-sm"
 				disabled={isLastOrNextDisabled()}
 			>
 				Último

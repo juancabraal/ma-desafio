@@ -8,7 +8,7 @@ import 'moment/locale/pt-br';
 
 moment().locale('pt-br');
 
-export default function() {
+export default function () {
 	const [cronometer, dispatch] = useReducer((state = moment(), action) => {
 		if (action.type === 'add') return moment();
 		return state;
@@ -18,6 +18,7 @@ export default function() {
 		const timer = window.setInterval(() => {
 			dispatch({ type: 'add' });
 		}, 1000);
+
 		return () => {
 			window.clearInterval(timer);
 		};
@@ -39,24 +40,22 @@ export default function() {
 				<span>NO AR</span>
 			</div>
 			<div className="footer-content">
-				<div className="location spacing">
+				<div className="location spacing hide-sm">
 					<Icon className="icon">tv</Icon>
 					<span>ENCONTRO - 10:00</span>
 				</div>
-				<div className="update spacing">
+				<div className="update spacing hide-sm">
 					<Icon className="icon">update</Icon>
 					<span>
 						Última atualização em {moment().format('HH:mm')}
 					</span>
 				</div>
 				<div className="grow"></div>
-				<div className="date spacing">
+				<div className="date spacing hide-sm">
 					<span>{getDate()}</span>
 				</div>
 				<div className="cronometer">
-					<strong>
-						// {cronometer ? cronometer.format('HH:mm:ss') : ''}
-					</strong>
+					{`// ${cronometer ? cronometer.format('HH:mm:ss') : ''}`}
 				</div>
 			</div>
 		</div>

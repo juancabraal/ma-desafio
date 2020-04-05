@@ -17,13 +17,13 @@ import Sidemenu from 'components/shared/Sidemenu';
 import { getAll } from 'store/usuarios/actions';
 import Footer from 'components/Footer';
 
-export default function() {
+export default function () {
 	const dispatch = useDispatch();
 
 	const [showMenu, setShowMenu] = useState(false);
 
 	const { isLoading, hasError, data: usuarios } = useSelector(
-		state => state.usuarios
+		(state) => state.usuarios
 	);
 
 	function toggleMenu() {
@@ -64,7 +64,7 @@ export default function() {
 	}
 
 	return (
-		<div className="container">
+		<div className={`container ${showMenu ? 'sidemenu-open' : ''}`}>
 			<Header onMenu={() => toggleMenu()} />
 			<CSSTransition
 				in={showMenu}

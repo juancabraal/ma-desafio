@@ -10,6 +10,12 @@ body {
 	background: $body-color;
 }
 
+.container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
 /******* GENERAL *******/
 
 .grow {
@@ -40,6 +46,14 @@ body {
 		font-size: 40px;
 		color: $icon-color;
 	}
+}
+
+.hide-sm {
+	display: initial;
+}
+
+.show-sm {
+	display: none;
 }
 
 /******* GENERAL *******/
@@ -100,8 +114,10 @@ body {
 /******* CONTENT *******/
 
 .content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 	padding: 30px 40px;
-	min-height: 73vh;
 
 	.table {
 		@include box-shadow(0px, 15px, 20px, $shadow-color);
@@ -213,6 +229,10 @@ body {
 		}
 	}
 }
+
+/******* CONTENT *******/
+
+/******* SIDEMENU *******/
 
 .sidemenu-animation-enter {
 	opacity: 1;
@@ -346,6 +366,10 @@ body {
 	@include slideAnimation(100vw, 0px);
 }
 
+/******* SIDEMENU *******/
+
+/******* FOOTER *******/
+
 .footer {
 	display: flex;
 	align-items: center;
@@ -400,8 +424,53 @@ body {
 		}
 
 		.cronometer {
+			min-width: 165px;
+			font-weight: bold;
 			font-size: 30px;
 			color: $secundary-color;
 		}
 	}
 }
+
+/******* FOOTER *******/
+
+/******* MEDIA QUERIES *******/
+
+@media (max-width: 1023px) {
+	.hide-sm {
+		display: none !important;
+	}
+
+	.show-sm {
+		display: initial;
+	}
+
+	.search-form {
+		margin: 0px 20px !important;
+	}
+
+	.sidemenu {
+		width: 100vw;
+		height: 100vh;
+		overflow: auto;
+	}
+
+	.sidemenu-open .content,
+	.sidemenu-open .footer {
+		display: none;
+	}
+
+	.table {
+		overflow: auto;
+	}
+
+	.item-show-hover {
+		display: none !important;
+	}
+
+	.pagination {
+		justify-content: space-between !important;
+	}
+}
+
+/******* MEDIA QUERIES *******/
