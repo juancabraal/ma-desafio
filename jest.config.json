@@ -1,0 +1,5 @@
+{
+	"verbose": true,
+	"setupFiles": ["<rootDir>/src/setupTests.js"],
+	"moduleDirectories": ["node_modules", "src"]
+}
