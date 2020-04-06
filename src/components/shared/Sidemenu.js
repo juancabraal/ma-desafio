@@ -5,14 +5,14 @@ import {
 	TextField,
 	RadioGroup,
 	FormControlLabel,
-	Radio
+	Radio,
 } from '@material-ui/core';
 
-export default function({ onMenu }) {
+export default function ({ onMenu }) {
 	const [filterVisibility, setVisibility] = useState({
 		inclusao: true,
 		alteracao: true,
-		ativoInativo: true
+		ativoInativo: true,
 	});
 
 	function changeVisibility(filterName) {
@@ -42,6 +42,37 @@ export default function({ onMenu }) {
 					</div>
 				</div>
 				<div className="sidemenu-content">
+					<div className="header-icons show-sm">
+						<div className="chart-buttons">
+							<Button className="icon icon-white icon-shadow br-10">
+								<Icon>security</Icon>
+							</Button>
+							<Button className="icon icon-shadow gd-icon br-10">
+								<Icon>person</Icon>
+							</Button>
+						</div>
+						<Button
+							variant="contained"
+							color="primary"
+							startIcon={<Icon>person</Icon>}
+							className="add-user"
+						>
+							INCLUIR USUÁRIO
+						</Button>
+
+						<div className="settings-buttons">
+							<Button className="icon br-10">
+								<Icon>home</Icon>
+							</Button>
+							<Button className="icon br-10">
+								<Icon>settings</Icon>
+							</Button>
+							<Button className="icon br-10">
+								<Icon>power_settings_new</Icon>
+							</Button>
+						</div>
+					</div>
+
 					<div className="description">
 						Utilize os filtros abaixo para refinar os resultados da
 						tabela, clique no botão APLICAR para salvar as
@@ -97,7 +128,7 @@ export default function({ onMenu }) {
 												label="Inicio"
 												placeholder="00/00/0000"
 												InputLabelProps={{
-													shrink: true
+													shrink: true,
 												}}
 											/>
 										</div>
@@ -107,7 +138,7 @@ export default function({ onMenu }) {
 												label="Término"
 												placeholder="00/00/0000"
 												InputLabelProps={{
-													shrink: true
+													shrink: true,
 												}}
 											/>
 										</div>

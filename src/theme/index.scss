@@ -56,6 +56,38 @@ body {
 	display: none;
 }
 
+.separator {
+	margin: 0px 20px;
+	border-right: 1px solid $separator-color;
+	height: 20px;
+}
+
+.icon {
+	padding: 10px 15px;
+	color: $icon-color;
+	min-width: auto;
+}
+
+.settings-buttons .icon {
+	padding: 10px;
+}
+
+.icon-shadow {
+	@include box-shadow(5px, 5px, 10px, $shadow-color-darker);
+}
+
+.icon-white {
+	background: white;
+}
+
+.gd-icon {
+	@include gradient-color($primary-color, $secundary-color);
+
+	span {
+		color: white;
+	}
+}
+
 /******* GENERAL *******/
 
 /******* HEADER *******/
@@ -67,38 +99,6 @@ body {
 	.header-content {
 		display: flex;
 		align-items: center;
-
-		.separator {
-			margin: 0px 20px;
-			border-right: 1px solid $separator-color;
-			height: 20px;
-		}
-
-		.icon {
-			padding: 10px 15px;
-			color: $icon-color;
-			min-width: auto;
-		}
-
-		.settings-buttons .icon {
-			padding: 10px;
-		}
-
-		.icon-shadow {
-			@include box-shadow(5px, 5px, 10px, $shadow-color-darker);
-		}
-
-		.icon-white {
-			background: white;
-		}
-
-		.gd-icon {
-			@include gradient-color($primary-color, $secundary-color);
-
-			span {
-				color: white;
-			}
-		}
 
 		.search-form {
 			margin: 0px 50px;
@@ -458,6 +458,25 @@ body {
 	.sidemenu-open .content,
 	.sidemenu-open .footer {
 		display: none;
+	}
+
+	.header-icons {
+		margin-bottom: 10px;
+		display: flex;
+		flex-direction: column;
+
+		.settings-buttons,
+		.chart-buttons {
+			display: flex;
+			button {
+				width: 100%;
+			}
+		}
+
+		.chart-buttons,
+		.add-user {
+			margin-bottom: 20px;
+		}
 	}
 
 	.table {
