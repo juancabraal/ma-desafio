@@ -1,6 +1,8 @@
 import React from 'react';
-import UserTable from 'components/UserTable';
+
 import { shallow } from 'enzyme';
+
+import UserTable from 'components/UserTable';
 
 describe('USE TABLE COMPONENT', () => {
 	let wrapper;

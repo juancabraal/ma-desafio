@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme';
 
 import { Provider } from 'react-redux';
 
-import configureStore from '../src/store';
+import configureStore from 'store';
 
 import Home from 'views/Home';
 
